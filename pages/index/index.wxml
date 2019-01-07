@@ -1,0 +1,46 @@
+<!--index.wxml-->
+
+<import src="/wxSearch/wxSearch.wxml"/>
+<!-- <import src="/logs/logs.wxml"/> -->
+
+<view class="wxSearch-section">
+  <view class="wxSearch-pancel">
+    <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索公益组织" />
+    <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+  </view>
+</view>
+<template is="wxSearch" data="{{wxSearchData}}"/>
+<view class="container">
+  <view style="font-size:20px;margin-top:10px;">NGO2.0公益组织索引</view>
+  <!-- <view>NGO2.0公益小程序</view> -->
+  <!-- <image style="width:90%;" src="/images/qr.png" mode="aspectFit" />
+  <image style="width:70%;" src="/images/logo.png" mode="aspectFit" /> -->
+  <view style="font-size:20px;margin-top:10px;">example</view>
+<!--logs.wxml-->
+
+</view>
+<view class="container log-list">
+<scroll-view scroll-y style="height:100%;white-space:nowrap;" scroll-into-view="{{toView}}" enable-back-to-top bindscroll="scroll" scroll-with-animation scroll-top="{{scrollTop}}">
+  <view class="list-group" wx:for="{{logs}}" wx:for-item="group">
+    <view class="title" id="{{group.title}}">{{group.title}}</view>
+    <block wx:for="{{group.items}}" wx:for-item="user">
+      <view id="" class="list-group-item">
+        <image class="icon" src="{{user.avatar}}" lazy-load="true"></image>
+        <text class="log-item">{{user.name}}</text>
+      </view>
+    </block>
+  </view>
+</scroll-view>
+  <!-- 侧边字母导航 -->
+  <view class="list-shortcut">
+    <block wx:for="{{logs}}">
+      <text class="{{currentIndex===index?'current':''}}" data-id="{{item.title}}" bindtap='scrollToview'>{{item.title}}</text>
+    </block>
+  </view>
+  <!-- 固定在顶部的字母导航 -->
+  <view class="list-fixed {{fixedTitle=='' ? 'hide':''}}" style="transform:translate3d(0,{{fixedTop}}px,0);">
+    <view class="fixed-title">
+      {{fixedTitle}}
+    </view>
+  </view>
+</view>

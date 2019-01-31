@@ -1,5 +1,4 @@
 <!--index.wxml-->
-
 <import src="/wxSearch/wxSearch.wxml"/>
 <!-- <import src="/logs/logs.wxml"/> -->
 
@@ -11,11 +10,11 @@
 </view>
 <template is="wxSearch" data="{{wxSearchData}}"/>
 <view class="container">
-  <view style="font-size:20px;margin-top:10px;">NGO2.0公益组织索引</view>
+  <!-- <view style="font-size:20px;margin-top:10px;">NGO2.0公益组织索引</view> -->
   <!-- <view>NGO2.0公益小程序</view> -->
   <!-- <image style="width:90%;" src="/images/qr.png" mode="aspectFit" />
   <image style="width:70%;" src="/images/logo.png" mode="aspectFit" /> -->
-  <view style="font-size:20px;margin-top:10px;">example</view>
+  <!-- <view style="font-size:20px;margin-top:10px;">example</view> -->
 <!--logs.wxml-->
 
 </view>
@@ -23,24 +22,41 @@
 <scroll-view scroll-y style="height:100%;white-space:nowrap;" scroll-into-view="{{toView}}" enable-back-to-top bindscroll="scroll" scroll-with-animation scroll-top="{{scrollTop}}">
   <view class="list-group" wx:for="{{logs}}" wx:for-item="group">
     <view class="title" id="{{group.title}}">{{group.title}}</view>
+
     <block wx:for="{{group.items}}" wx:for-item="user">
       <view id="" class="list-group-item">
-        <image class="icon" src="{{user.avatar}}" lazy-load="true"></image>
+            <view id="{{user.name}}" class="kind-list-item-hd {{user.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <!-- <view bindtap="onLoad"> -->
+        <!-- <image class="icon" src="{{user.avatar}}" lazy-load="true"></image> -->
         <text class="log-item">{{user.name}}</text>
+ <view class="kind-list-item-bd {{user.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+            
+       <block wx:for="{{user.intro}}" wx:for-item="page" wx:key="*item">
+                <!-- <navigator url="pages/{{page}}/{{page}}" class="navigator"> -->
+                  <view class="navigator-text">{{page}}</view>
+                  <!-- <view class="navigator-arrow"></view> -->
+                <!-- </navigator> -->
+              </block>
+                  </view>
+          <!-- </view> -->
+</view>
+
       </view>
+            </view>
     </block>
   </view>
 </scroll-view>
   <!-- 侧边字母导航 -->
-  <view class="list-shortcut">
+  <!-- <view class="list-shortcut">
     <block wx:for="{{logs}}">
       <text class="{{currentIndex===index?'current':''}}" data-id="{{item.title}}" bindtap='scrollToview'>{{item.title}}</text>
     </block>
-  </view>
+  </view> -->
   <!-- 固定在顶部的字母导航 -->
-  <view class="list-fixed {{fixedTitle=='' ? 'hide':''}}" style="transform:translate3d(0,{{fixedTop}}px,0);">
+  <!-- <view class="list-fixed {{fixedTitle=='' ? 'hide':''}}" style="transform:translate3d(0,{{fixedTop}}px,0);">
     <view class="fixed-title">
       {{fixedTitle}}
     </view>
-  </view>
+  </view> -->
 </view>

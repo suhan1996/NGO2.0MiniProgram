@@ -1,3 +1,4 @@
+@import "../common/index.wxss";
 @import "/wxSearch/wxSearch.wxss";
 .log-list {
   display: flex;
@@ -6,6 +7,9 @@
 }
 .log-item {
   margin: 10rpx;
+  font-size: 16px;
+  white-space: pre-line;
+
 }
 .title {
   height: 60rpx;
@@ -20,10 +24,11 @@
   margin-top:0;
 }
 .list-group-item {
+  margin: 4vmax;
   display: flex;
   -webkit-box-align: center;
   align-items: center;
-  padding: 40rpx 0 0 60rpx;
+  padding: 40rpx 0 0 30rpx;
 }
 .list-group-item:last-child {
   padding-bottom: 60rpx;
@@ -75,4 +80,7 @@
   font-size:12px;
   color:rgba(255, 255, 255, 1);
   /* background:#ccc; */
+}
+.navigator-text{
+  white-space: pre-line;
 }
